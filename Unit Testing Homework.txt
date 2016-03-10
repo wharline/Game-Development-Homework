@@ -1,0 +1,41 @@
+Instructions: Write up what you would do for unit testing in C++ related to the program from chapter 5.
+How would you test functionality and what unit testing framework would you use.
+
+
+
+Call Direct3D_Init() and use assert to check that a direct3D was initialized and
+a device was created.  Use assert to check that the back buffer isn't NULL.
+Pass in bad values and use assert to make sure that it broke.
+
+Call LoadSurface() and use assert to check that the image returned isn't NULL.
+Pass in various file formats to LoadSurface() and use assert to check that various file
+formats work.
+
+Call DrawSurface() passing in the back buffer as the dest parameter and use assert
+to check that it got the correct RECT.  Try calling DrawSurface() and pass in a different
+surface as the dest parameter and use assert to make the same check.
+
+After calling Direct3D_Shutdown(), use assert to make sure that the direct3D object and the direct3D device object are NULL.
+
+Use assert statements in DirectInput_Init() to check that the keyboard and mouse devices aren't NULL.
+
+Use assert to check the values in DirectInput_Update() aren't NULL.
+
+Use if statements to check the returns from Mouse_X(), Mouse_Y(), and Mouse_Button().
+Use a switch statement to check the returns from Key_Down().
+
+After calling DirectInput_Shutdown(), use assert to check that the mouse and keyboard pointers are NULL.
+
+Call XInput_Controller_Found() and use assert to check that the caps.Type is 0.
+Also use assert to check that the caps struct is initialized and given values by XInputGetCapabilities().
+
+Use assert in XInput_Vibrate to check the moter speeds and the value of the vibration struct.
+
+Try using the XInput functions when a controller is not attached and use assert to make sure that
+it didn't dedect a controller.
+
+Use an assert on Game_Init() to make sure that the HWND is good and that it loaded the images correctly.
+
+Use an assert on Game_End() to check that all the surfaces were released and equal NULL.
+
+I would use the Catch framework combined with Coveralls to test everything in addition to the assert statements.
